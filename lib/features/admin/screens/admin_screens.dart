@@ -1,19 +1,18 @@
-import 'package:amazon/constants/global_variable.dart';
-import 'package:amazon/features/account/screens/account_screen.dart';
-import 'package:amazon/features/home/screens/home_screen.dart';
+import 'package:amazon/features/admin/screens/post_screens.dart';
 import 'package:flutter/material.dart';
-// import 'package:badges/badges.dart' as badge;
-import 'package:badges/badges.dart' as badges;
 
-class BottomBar extends StatefulWidget {
-  static const String routeName = '/actual-home';
-  const BottomBar({super.key});
+import '../../../constants/global_variable.dart';
+import '../../account/screens/account_screen.dart';
+import '../../home/screens/home_screen.dart';
+
+class AdminScreen extends StatefulWidget {
+  const AdminScreen({super.key});
 
   @override
-  State<BottomBar> createState() => _BottomBarState();
+  State<AdminScreen> createState() => _AdminScreenState();
 }
 
-class _BottomBarState extends State<BottomBar> {
+class _AdminScreenState extends State<AdminScreen> {
   void updatePage(int page) {
     setState(() {
       _page = page;
@@ -21,10 +20,12 @@ class _BottomBarState extends State<BottomBar> {
   }
 
   List<Widget> pages = [
-    const HomeScreen(),
-    const AccountScreen(),
+    const PostsScreen(),
     const Center(
-      child: Text('Cart Page'),
+      child: Text('Analytics Page'),
+    ),
+    const Center(
+      child: Text('Order Page'),
     )
   ];
   int _page = 0;
@@ -33,6 +34,36 @@ class _BottomBarState extends State<BottomBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(50),
+        child: AppBar(
+          // toolbarHeight: 90,
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                Container(
+                  alignment: Alignment.topLeft,
+                  child: Image.asset(
+                    'assets/images/amazon_in.png',
+                    width: 120,
+                    height: 45,
+                    color: Colors.black,
+                  ),
+                ),
+                const Text(
+                  "Admin",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.black),
+                )
+              ]),
+            ],
+          ),
+          flexibleSpace: Container(
+              decoration:
+                  BoxDecoration(gradient: GlobalVariables.appBarGradient)),
+        ),
+      ),
       body: pages[_page],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _page,
@@ -71,7 +102,7 @@ class _BottomBarState extends State<BottomBar> {
                     ),
                   ),
                 ),
-                child: Icon(Icons.person_outline_outlined),
+                child: Icon(Icons.analytics_outlined),
               ),
               label: ""),
           BottomNavigationBarItem(
@@ -80,20 +111,16 @@ class _BottomBarState extends State<BottomBar> {
                 decoration: BoxDecoration(
                   border: Border(
                     top: BorderSide(
-                      color: _page == 2
+                      color: _page == 1
                           ? GlobalVariables.selectedNavBarColor
                           : GlobalVariables.backgroundColor,
                       width: bottomBarBorderWidth,
                     ),
                   ),
                 ),
-                child: badges.Badge(
-                    elevation: 0,
-                    badgeContent: const Text('2'),
-                    badgeColor: Colors.white,
-                    child: Icon(Icons.shopping_cart_outlined)),
+                child: Icon(Icons.all_inbox_outlined),
               ),
-              label: "")
+              label: ""),
         ],
       ),
     );

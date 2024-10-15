@@ -101,6 +101,3 @@ Feel free to contribute to the project by submitting pull requests or reporting 
 |:---|:---|
 |![Screenshot 3](screenshots/3.png)|![Screenshot 4](screenshots/4.png)|
 
-## License
-
-This project is licensed under the MIT License.

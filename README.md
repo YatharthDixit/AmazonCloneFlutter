@@ -63,21 +63,7 @@ This is a full-stack e-commerce application built with Flutter for the frontend 
     *   `POST /admin/add-product`: Add a new product (requires admin authentication).
     *   `DELETE /admin/delete-product`: Delete a product (requires admin authentication).
 
-## Project Structure
 
-*   Frontend (Flutter):
-    *   `main.dart`: Entry point of the application.
-    *   `router.dart`: Defines navigation routes.
-    *   `bottom_bar.dart`: Handles main navigation between Home, Account, and Cart screens.
-    *   `home_screen.dart`: Displays products, deals, and categories.
-    *   `account_screen.dart`: Shows user details and order history.
-    *   `auth_screen.dart`: Handles user authentication.
-*   Backend (Node.js):
-    *   `index.js`: Sets up the server and routes.
-    *   `auth copy.js`, `user copy.js`: Handles user authentication routes.
-    *   `admin copy.js`, `product copy.js`: Handles admin routes for product management.
-    *   `auth.js`, `admin.js`: Middleware for authentication and authorization.
-    *   `product.js`, `user.js`: Define Mongoose schemas for products and users.
 
 ## Installation
 
